@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.IO; 
+using System;
 
 public class InputHandler : MonoBehaviour
 {
+
+    private DateTime startTime; 
+    private DateTime endTime;
+    private bool timingStarted = false; 
+
     private Camera _mainCamera;
     private ColorChanger _colorChanger;
 
@@ -14,6 +21,7 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
+
         _mainCamera = Camera.main;
         _colorChanger = GetComponent<ColorChanger>();
 
@@ -40,6 +48,21 @@ public class InputHandler : MonoBehaviour
 
         Debug.Log(rayHit.collider.gameObject.name);
 
+
+
+        //start timeing
+         if (rayHit.collider.gameObject.CompareTag("ball") && !timingStarted)
+        {
+            startTime = DateTime.Now;
+            timingStarted = true;
+        }
+
+
+
+
+
+
+
         // 确认点击的是当前目标
         if (rayHit.collider.gameObject == targets[currentTargetIndex])
         {
@@ -51,6 +74,22 @@ public class InputHandler : MonoBehaviour
 
             // 设置新目标为红色
             _colorChanger.ChangeColor(targets[currentTargetIndex], Color.red);
+
+            //finish timeing
+            if (currentTargetIndex == 0 && timingStarted)
+            {
+                endTime = DateTime.Now;
+                TimeSpan totalTime = endTime - startTime;
+                Debug.Log("Total time: " + totalTime);
+
+                string filePath = Application.dataPath + "/ClickTime.txt";
+                using (StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Total time: " + totalTime);
+                }
+
+                timingStarted = false;
+            }
         }
     }
 }
