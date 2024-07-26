@@ -1,0 +1,42 @@
+
+record from me. total 18 times. 
+1:  mouse,    radius: 0.5, distance: 2.5
+2:  touchpad, radius: 0.5, distance: 2.5
+3:  mouse,    radius: 1,   distance: 2.5
+4:  touchpad, radius: 1,   distance: 2.5
+5:  mouse,    radius: 1.5, distance: 2.5
+6:  touchpad, radius: 1.5, distance: 2.5
+7:  mouse,    radius: 0.5, distance: 5
+8:  touchpad, radius: 0.5, distance: 5
+9:  mouse,    radius: 1,   distance: 5
+10: touchpad, radius: 1,   distance: 5
+11: mouse,    radius: 1.5, distance: 5
+12: touchpad, radius: 1.5, distance: 5
+13: mouse,    radius: 0.5, distance: 7.5
+14: touchpad, radius: 0.5, distance: 7.5
+15: mouse,    radius: 1,   distance: 7.5
+16: touchpad, radius: 1,   distance: 7.5
+17: mouse,    radius: 1.5, distance: 7.5
+18: touchpad, radius: 1.5, distance: 7.5
+
+
+1.Total time: 00:00:06.9908797
+2.Total time: 00:00:09.5237657
+3.Total time: 00:00:05.4024611
+4.Total time: 00:00:05.6658535
+5.Total time: 00:00:04.1921306
+6.Total time: 00:00:05.3090402
+7.Total time: 00:00:09.3329029
+8.Total time: 00:00:08.5500341
+9.Total time: 00:00:06.4869589
+10.Total time: 00:00:06.2755278
+11.Total time: 00:00:05.2370486
+12.Total time: 00:00:05.6870551
+13.Total time: 00:00:10.0308346
+14.Total time: 00:00:08.8394749
+15.Total time: 00:00:07.4305099
+16.Total time: 00:00:06.8285952
+17.Total time: 00:00:05.4721526
+18.Total time: 00:00:07.2951920
+
+after test. 
