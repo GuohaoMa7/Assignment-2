@@ -1208,24 +1208,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1801469597 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5889241556074297380, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
-  m_PrefabInstance: {fileID: 4445248969282233843}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1801469603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801469597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8689ee70a507dfc43b36a48872f64fe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickTimes: []
 --- !u!1 &1933380336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1517,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
+      propertyPath: targets.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 1764817448}
@@ -1570,6 +1556,10 @@ PrefabInstance:
       propertyPath: targets.Array.data[8]
       value: 
       objectReference: {fileID: 743510152}
+    - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
+      propertyPath: targets.Array.data[9]
+      value: 
+      objectReference: {fileID: 228016942}
     - target: {fileID: 5889241556074297380, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
       propertyPath: m_Name
       value: InputHandler
@@ -1577,10 +1567,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5889241556074297380, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1801469603}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

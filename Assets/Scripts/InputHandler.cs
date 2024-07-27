@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.IO; 
+using System.IO;
 using System;
 
 public class InputHandler : MonoBehaviour
 {
-
-    private DateTime startTime; 
-    private DateTime endTime;
-    private bool timingStarted = false; 
-
+    private DateTime? previousClickTime = null; 
     private Camera _mainCamera;
     private ColorChanger _colorChanger;
 
-    // 添加目标列表和当前目标索引
     public List<GameObject> targets;
     private int currentTargetIndex = 0;
 
+    //change this when change a new scene
+    private string technique = "Mouse";
+    private double width = 0.5;
+    private double amplitude = 5;
+
+    private bool isCorrect = false; 
+
     private void Awake()
     {
-
         _mainCamera = Camera.main;
         _colorChanger = GetComponent<ColorChanger>();
 
-        // 初始化目标列表颜色，设置第一个目标为红色
         for (int i = 0; i < targets.Count; i++)
         {
             _colorChanger.ChangeColor(targets[i], Color.white);
@@ -44,52 +44,68 @@ public class InputHandler : MonoBehaviour
             _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue())
         );
 
-        if (!rayHit.collider) return;
+        DateTime currentClickTime = DateTime.Now;
+
+        if (!rayHit.collider)
+        {
+            LogClickData(currentClickTime, false);
+            return;
+        }
 
         Debug.Log(rayHit.collider.gameObject.name);
 
-
-
-        //start timeing
-         if (rayHit.collider.gameObject.CompareTag("ball") && !timingStarted)
+        // Check if clicking outside the ball
+        if (!rayHit.collider.CompareTag("ball"))
         {
-            startTime = DateTime.Now;
-            timingStarted = true;
+
+            isCorrect = false;
+            LogClickData(currentClickTime, isCorrect);
+            return;
         }
 
-
-
-
-
-
-
-        // 确认点击的是当前目标
+        // Check if clicking the ball
         if (rayHit.collider.gameObject == targets[currentTargetIndex])
         {
-            // 将当前目标颜色改回白色
             _colorChanger.ChangeColor(targets[currentTargetIndex], Color.white);
 
-            // 选择下一个目标（对角线方向）
-            currentTargetIndex = (currentTargetIndex + (targets.Count / 2)) % targets.Count;
 
-            // 设置新目标为红色
+            currentTargetIndex = (currentTargetIndex + (targets.Count / 2)) % targets.Count;
             _colorChanger.ChangeColor(targets[currentTargetIndex], Color.red);
 
-            //finish timeing
-            if (currentTargetIndex == 0 && timingStarted)
-            {
-                endTime = DateTime.Now;
-                TimeSpan totalTime = endTime - startTime;
-                Debug.Log("Total time: " + totalTime);
 
-                string filePath = Application.dataPath + "/ClickTime.txt";
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    writer.WriteLine("Total time: " + totalTime);
-                }
+            isCorrect = true;
+            LogClickData(currentClickTime, isCorrect);
+        }
+        else
+        {
 
-                timingStarted = false;
-            }
+            isCorrect = false;
+            LogClickData(currentClickTime, isCorrect);
+        }
+    }
+
+    private void LogClickData(DateTime currentClickTime, bool isCorrect)
+    {
+        if (previousClickTime.HasValue)
+        {
+            TimeSpan timeInterval = currentClickTime - previousClickTime.Value;
+            double timeSeconds = timeInterval.TotalSeconds;
+            LogData(technique, width, amplitude, timeSeconds, isCorrect);
+        }
+        else
+        {
+            LogData(technique, width, amplitude, 0, isCorrect); 
+        }
+
+        previousClickTime = currentClickTime;
+    }
+
+    private void LogData(string technique, double width, double amplitude, double time, bool isCorrect)
+    {
+        string filePath = Application.dataPath + "/ClickTime.txt";
+        using (StreamWriter writer = new StreamWriter(filePath, true))
+        {
+            writer.WriteLine($"{technique}, {width}, {amplitude}, {time}, {(isCorrect ? 1 : 0)}");
         }
     }
 }
