@@ -1517,6 +1517,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
+      propertyPath: width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
+      propertyPath: technique
+      value: touchpad
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900288413436607429, guid: fca2596f40c22be46bd41670d279b11d, type: 3}
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 1764817448}

@@ -15,9 +15,9 @@ public class InputHandler : MonoBehaviour
     private int currentTargetIndex = 0;
 
     //change this when change a new scene
-    private string technique = "Mouse";
-    private double width = 0.5;
-    private double amplitude = 5;
+    public string technique = "Mouse";
+    public double width = 0.5;
+    public double amplitude = 5;
 
     private bool isCorrect = false; 
 
