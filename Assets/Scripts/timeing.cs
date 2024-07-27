@@ -27,7 +27,7 @@ public class timeing : MonoBehaviour
     {
         timing = false;
         endTime = Time.time;
-        float totalTime = endTime - startTime;
+        float totalTime = endTime- startTime;
         Debug.Log("Total Time: " + totalTime);
 
 
